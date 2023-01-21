@@ -1,2 +1,2 @@
-TAGS="rcm git shell zsh"
+TAGS="git shell zsh tmux"
 EXCLUDES="README.md commands.md LICENSE"
