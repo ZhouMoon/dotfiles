@@ -1,0 +1,2 @@
+TAGS="rcm git shell zsh"
+EXCLUDES="README.md commands.md LICENSE"
