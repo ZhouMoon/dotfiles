@@ -1,0 +1,229 @@
+﻿"____________________________________________________________
+"
+"      /\__\         /\  \         /\  \         /\__\
+"     /::|  |       /::\  \       /::\  \       /::|  |
+"    /:|:|  |      /:/\:\  \     /:/\:\  \     /:|:|  |
+"   /:/|:|__|__   /:/  \:\  \   /:/  \:\  \   /:/|:|  |__
+"  /:/ |::::\__\ /:/__/ \:\__\ /:/__/ \:\__\ /:/ |:| /\__\
+"  \/__/~~/:/  / \:\  \ /:/  / \:\  \ /:/  / \/__|:|/:/  /
+"        /:/  /   \:\  /:/  /   \:\  /:/  /      |:/:/  /
+"       /:/  /     \:\/:/  /     \:\/:/  /       |::/  /
+"      /:/  /       \::/  /       \::/  /        /:/  /
+"      \/__/         \/__/         \/__/         \/__/
+"                  ----------------------
+"                  | Moon IDEA VIM 配置  |
+"                  ----------------------
+"_____________________________________________________________
+
+"Source your .ideavimrc
+"source ~/.ideavimrc
+
+"=============================================================
+" 基础键位说明
+"=============================================================
+" M->cmd, A->option, C->control
+" <ESC> - escape, <BS> - backspace
+" 设置leader 键位
+let mapleader = "\<space>"
+
+"=============================================================
+" 基础设置
+"=============================================================
+"Find more examples here: https://jb.gg/share-ideavimrc
+"配置编码
+set encoding=utf-8
+"自动缩进
+set autoindent
+"垂直滚动时，光标距离顶部/底部的位置(单位：行)
+set scrolloff=5
+"设置行号
+set number
+"高亮搜索
+set hlsearch
+"开启模式显示
+set showmode
+"同步IDE与VIM书签
+set ideamarks
+" Sets how many lines of history VIM has to remember
+set history=500
+"禁用错误提示音
+set visualbell
+set noerrorbells
+
+"=============================================================
+" 搜索相关
+"=============================================================
+" 搜索时智能匹配大小写
+set ignorecase smartcase
+"忽略大小写
+"set ignorecase
+" 使用正统的搜索正则
+nmap / /\v
+vmap / /\v
+" 在输入部分查找模式时显示相应的匹配点。
+set incsearch
+"set nolazyredraw "Don't redraw while executing macros
+set magic "Set magic on, for regular expressions
+" 显示匹配括号
+set showmatch
+nmap n nzz
+nmap N Nzz
+vmap n nzz
+vmap N Nzz
+"取消搜索高量
+nmap <Leader>u :noh<CR>
+"visual 模式 下 按* 号 搜索 光标选中的内容(对已选中的内容进行查找)
+vmap * "ry/<C-R>r<CR>
+"=============================================================
+" 复制粘贴相关
+"=============================================================
+"共用系统剪贴板
+":set clipboard=unnamed
+nmap <Leader>y "*y
+nmap <Leader>p "*p
+nmap P "0p
+vmap Y "+y
+"退格代替<S>%
+"nnoremap backspace %
+nmap <BS> %
+
+"=============================================================
+" 个人习惯
+"=============================================================
+"选中引号内
+nmap <Leader>v vi"
+" 选择模式选到行首
+vmap H ^
+" 选择模式选到行尾
+vmap L $
+"上一个Tab
+nmap <silent> <Left> gT
+"下一个Tab
+nmap <silent> <Right>  gt
+"行首
+nmap H ^
+"行尾
+nmap L $
+"=============================================================
+" IDEA预定义方法自定义快捷键
+" 查看预定义方法命令 `:actionlist` 请取需要的命令设为组合键
+"=============================================================
+" 显示action ID
+"toggle something
+"toggle track vim action Id
+"nnoremap ti :action VimFindActionIdAction<CR>
+" 上一个方法
+nmap [[ <Action>(MethodUp)
+" 下一个方法
+nmap ]] <Action>(MethodDown)
+" 上一个修改点
+nmap [c <Action>(VcsShowPrevChangeMarker)
+" 下一个修改点
+nmap ]c <Action>(VcsShowNextChangeMarker)
+" 上一个异常
+nmap [e <Action>(GotoPreviousError)
+" 下一个异常
+nmap ]e <Action>(GotoNextError)
+" 关闭当前编辑窗口
+nmap <Leader>c <Action>(CloseEditor)
+" 高量显示
+nmap <Leader>sh <Action>(HighlightUsagesInFile)
+" 打开当前文件在目录中的位置
+nmap <Leader>e <Action>(SelectInProjectView)
+" 最近编辑
+nmap <Leader><Leader>e <Action>(RecentLocations)
+" 当前页面方法列表
+nmap <Leader>l <Action>(FileStructurePopup)
+" 隐藏所有窗口
+nmap <Leader><Leader>l <Action>(HideAllWindows)
+" 全屏
+nmap <Leader><Leader><Leader>l <Action>(ToggleFullScreen)
+" 新建...
+nmap <Leader><Leader>n <Action>(NewElement)
+" pin tab
+nmap <Leader><Leader>t <Action>(PinActiveEditorTab)
+" 选择模式扩大选择范围
+vmap v <Action>(EditorSelectWord)
+" 选择模式缩小选择范围
+vmap V <Action>(EditorUnSelectWord)
+" 打开最近项目
+nmap <Leader><Leader>o <Action>(RecentProjectListGroup)
+" 鼠标悬停
+nmap <Leader>gh <Action>(ShowErrorDescription)
+
+"
+" Git 相关
+"
+" Git 提交记录
+nmap ta <Action>(Annotate)
+" Git 当前文件历史
+map th <Action>(Vcs.ShowTabbedFileHistory)
+
+
+"=============================================================
+" Plus settings
+"=============================================================
+"ideaVim_extension
+"开启输入法自动切换功能
+"set keep-english-in-normal
+"EasyMotion settings
+"快速定位
+set easymotion
+"nmap ss <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-s2)
+let g:EasyMotion_override_acejump = 0
+
+"文本对象编辑 https://www.vim.org/scripts/script.php?script_id=2699
+set argtextobj
+let g:argtextobj_pairs="[:],(:),<:>"
+
+set NERDTree
+
+"https://github.com/tpope/vim-surround
+set surround
+
+"连接命令
+"https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
+set ideajoin
+"=============================================================
+" Plus settings
+"=============================================================
+
+"=============================================================
+" IDE 使用默认配置
+"=============================================================
+" reactivate some IDEA shortcuts
+":map <c-b> <Action>(ShowUsages)
+:map <c-s> <Action>(SaveAll)
+
+"=============================================================
+" 自动化脚本
+"=============================================================
+
+"=============================================================
+" 默认键位配置
+"=============================================================
+"sethandler <C-C> n-v:ide i:vim
+" IEDA
+sethandler <C-F> a:ide
+sethandler <C-B> a:ide
+sethandler <C-U> a:ide
+sethandler <C-T> a:ide
+sethandler <C-K> a:ide
+sethandler <C-S> a:ide
+sethandler <C-E> a:ide
+sethandler <C-Q> a:ide
+sethandler <C-P> a:ide
+sethandler <C-N> a:ide
+sethandler <C-M> a:ide
+sethandler <C-L> a:ide
+sethandler <C-C> a:ide
+sethandler <C-D> a:ide
+" VIM
+sethandler <C-I> a:vim
+sethandler <C-O> a:vim
+sethandler <C-W> a:vim
+sethandler <C-A> a:vim
+"=============================================================
+" 默认键位配置
+"=============================================================
